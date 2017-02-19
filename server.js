@@ -6,6 +6,7 @@ var mongoose=require("mongoose");
 var router=express.Router();
 var appRoutes=require("./app/routes/api")(router);
 var bodyParser=require("body-parser");
+var path=require("path");
 mongoose.Promise = require('bluebird');
 
 
@@ -16,6 +17,9 @@ app.use(morgan('dev'));
 //using body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//to serve static files
+app.use(express.static(__dirname+"/public"));
 
 //using router
 app.use("/api",appRoutes);
@@ -30,10 +34,8 @@ mongoose.connect("mongodb://varun:varun@ds157459.mlab.com:57459/meanappvk",funct
 });
 
 
-
-
-app.get("/",function(req,res){
-	res.send("welcome");
+app.get("*",function(req,res){
+	res.sendFile(path.join(__dirname+"/public/app/views/index.html"));
 
 });
 
