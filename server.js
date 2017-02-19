@@ -1,9 +1,10 @@
 var express=require("express");
 var app=express();
-var port=process.env.PORT||3000;
+var port=process.env.PORT||4000;
 var morgan=require("morgan");
 var mongoose=require("mongoose");
-var User=require("./app/models/user");
+var router=express.Router();
+var appRoutes=require("./app/routes/api")(router);
 var bodyParser=require("body-parser");
 mongoose.Promise = require('bluebird');
 
@@ -11,6 +12,14 @@ mongoose.Promise = require('bluebird');
 
 //to log in the requests in cmd
 app.use(morgan('dev'));
+
+//using body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//using router
+app.use("/api",appRoutes);
+
 
 //connecting to the DB
 mongoose.connect("mongodb://varun:varun@ds157459.mlab.com:57459/meanappvk",function(err){
@@ -21,8 +30,6 @@ mongoose.connect("mongodb://varun:varun@ds157459.mlab.com:57459/meanappvk",funct
 });
 
 
-//using body-parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 
 app.get("/",function(req,res){
@@ -31,25 +38,6 @@ app.get("/",function(req,res){
 });
 
 
-//adding user to DB
-app.post("/users",urlencodedParser,function(req,res){
-
-
-	var newUser=User(req.body).save(function(err,data){
-		if(err)
-		{
-			console.log(err);
-			res.send("Something went wrong");	
-		}
-		else{
-			
-			res.json(data);
-			console.log("user created");
-
-		}
-	});
-
-});	
 
 
 
