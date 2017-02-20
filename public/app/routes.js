@@ -15,6 +15,12 @@ $routeProvider
 		templateUrl:"app/views/pages/contact.html"
 	})
 
+	.when("/register",{
+		templateUrl:"app/views/pages/users/register.html",
+		controller:"regControl",
+		controllerAs:"register"
+	})
+
 	.otherwise({redirectTo:"/"});
 
 	$locationProvider.html5Mode({

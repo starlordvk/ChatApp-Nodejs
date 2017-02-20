@@ -1,7 +1,6 @@
-var userApp=angular.module("userApp",["appRoutes"]);
+var userApp=angular.module("userApp",["appRoutes","userController"]);
 
 userApp.config(function(){
 
-	console.log("Testting the userApp module");
-
+	
 });
