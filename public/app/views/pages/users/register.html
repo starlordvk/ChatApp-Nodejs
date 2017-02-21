@@ -2,6 +2,8 @@
 <div class="page-header">
 	User Registration
 
+<!-- calling register controller's regUser() method that makes http post request on submit button click -->
+
 	<form ng-submit="register.regUser()">
 		<label>Email</label>
 		<input class="form-control" type="text" name="email" placeholder="Enter Email" ng-model="register.regData.email">
@@ -20,9 +22,12 @@
 
 </div>
 
+<!-- For displaying alerts regarding successfull user registration -->
+
 <div class="row show-hide message" ng-show="register.successMsg">
 	<div class="alert alert-success">{{register.successMsg}}</div>
 </div>
+
 
 <div class="row show-hide message" ng-show="register.errormsg">
 	<div class="alert alert-danger">{{register.errormsg}}</div>
