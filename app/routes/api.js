@@ -10,12 +10,12 @@ router.post("/users",function(req,res){
 		if(err)
 		{
 			console.log(err);
-			res.send("Something went wrong");	
+			res.json({success:false,message:"Unable to create new user"});	
 		}
 		else{
 			
-			res.json(data);
-			console.log("user created");
+			res.json({success:true,message:"User Created"});
+			
 
 		}
 	});
