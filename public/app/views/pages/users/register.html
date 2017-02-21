@@ -22,12 +22,21 @@
 
 </div>
 
+<br>
+
+<!-- Progress indicator for Registration -->
+<div class="jumbotron text-center" ng-show="register.loading">
+	<span class="glyphicon glyphicon-repeat spinner" ></span>
+	<p>Registering...</p>
+</div>
+
 <!-- For displaying alerts regarding successfull user registration -->
 
 <div class="row show-hide message" ng-show="register.successMsg">
 	<div class="alert alert-success">{{register.successMsg}}</div>
 </div>
 
+<!-- For displaying alerts regarding erraneous user registration -->
 
 <div class="row show-hide message" ng-show="register.errormsg">
 	<div class="alert alert-danger">{{register.errormsg}}</div>
