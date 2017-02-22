@@ -3,6 +3,7 @@ var User=require("../models/user");
 module.exports=function(router){
 	//adding user to DB
 	//localhost:3000/users
+	//User registartion
 router.post("/users",function(req,res){
 
 
@@ -22,5 +23,27 @@ router.post("/users",function(req,res){
 
 });	
 
+//User login
+router.post("/authenticate",function(req,res){
+
+res.send("testing authentication");
+
+	User.findOne({username:req.body.username}).select("email username password").exec(function(err,user){
+
+		if(err) throw err
+
+		if(!user)
+			{
+				res.json({success:false,message:"Could not find user"});
+
+			}
+
+			else if(user)
+			{
+				
+			}
+
+	});
+});
 return router;
 }

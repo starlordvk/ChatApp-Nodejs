@@ -1,14 +1,11 @@
 
 <div class="page-header">
-	<h2>User Registration</h2>
+	<h2>User Login</h2>
 	</div>
 
 <!-- calling register controller's regUser() method that makes http post request on submit button click -->
 
 	<form ng-submit="register.regUser()">
-		<label>Email</label>
-		<input class="form-control" type="text" name="email" placeholder="Enter Email" ng-model="register.regData.email">
-		<br>
 		
 		<label>UserName</label>
 		<input class="form-control" type="text" name="name" placeholder="Enter UserName" ng-model="register.regData.username">
@@ -18,9 +15,8 @@
 		<input class="form-control" type="text" name="password" placeholder="Enter Password" ng-model="register.regData.password">
 		<br>
 
-		<button class="btn btn-primary" type="submit">Register</button>
+		<button class="btn btn-primary" type="submit">Login</button>
 	</form>
-
 
 
 <br>
