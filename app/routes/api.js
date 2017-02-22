@@ -26,11 +26,11 @@ router.post("/users",function(req,res){
 //User login
 router.post("/authenticate",function(req,res){
 
-res.send("testing authentication");
+
 
 	User.findOne({username:req.body.username}).select("email username password").exec(function(err,user){
 
-		if(err) throw err
+		if(err) throw err;
 
 		if(!user)
 			{
@@ -40,8 +40,26 @@ res.send("testing authentication");
 
 			else if(user)
 			{
+				if(req.body.password)
+
+				{
+					var validPassword=user.comparePassword(req.body.password);
+					
+					if(!validPassword){
+						res.json({success:false,message:"Incorrect password"});
+					}
 				
+					else{
+							res.json({success:true,message:"User authenticated"});
+						}
+			
+				}
+				else
+				{
+					res.json({success:false,message:"Password not provided"});
+				}	
 			}
+
 
 	});
 });
