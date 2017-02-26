@@ -36,6 +36,8 @@ userController.controller("regControl",function($http,$location,$timeout){
 			}
 		});
 	}
+
+	
 });
 
 

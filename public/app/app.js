@@ -1,4 +1,4 @@
-var userApp=angular.module("userApp",["appRoutes","userController","userServices","ngAnimate","mainController"]);
+var userApp=angular.module("userApp",["appRoutes","userController","userServices","authServices","ngAnimate","mainController"]);
 
 userApp.config(function(){
 

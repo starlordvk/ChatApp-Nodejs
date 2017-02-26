@@ -24,10 +24,13 @@ $routeProvider
 
 	.when("/login",{
 		templateUrl:"app/views/pages/users/login.html",
-		controller:"mainCtrl",
-		controllerAs:"logincontrol"
+		controller:"mainCtrl"
+		
 	})
 
+	.when("/logout",{
+		templateUrl:"app/views/pages/users/logout.html"
+	})
 
 	.otherwise({redirectTo:"/"});
 

@@ -1,4 +1,6 @@
 var User=require("../models/user");
+var jwt = require('jsonwebtoken');
+var secret="voldemort";
 
 module.exports=function(router){
 	//adding user to DB
@@ -53,7 +55,11 @@ console.log(req.body);
 					}
 				
 					else{
-							res.json({success:true,message:"User authenticated"});
+							//creatting a webtoken usinh jsonwebtoken module
+						var token=jwt.sign({
+  								username: user.username,email:user.email},secret,{ expiresIn: '24h' });
+
+							res.json({success:true,message:"User authenticated",token:token});
 						}
 			 	
 				}

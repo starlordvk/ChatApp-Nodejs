@@ -27,10 +27,11 @@
     
     <!-- Angular Services -->
     <script src='app/services/userServices.js'></script>
+    <script src='app/services/authServices.js'></script>
 
   </head>
 
-  <body ng-app="userApp">
+  <body ng-app="userApp" ng-controller="mainCtrl as logincontrol">
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -50,6 +51,7 @@
             <li><a href="/login">Login</a></li>
             <li><a href="/contact">Contact</a></li>
              <li><a href="/register">Register</a></li>
+             <li><a href="#" ng-click="logincontrol.logout();">Logout</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
