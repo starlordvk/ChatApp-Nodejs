@@ -3,16 +3,17 @@
 	<h2>User Login</h2>
 	</div>
 
-<!-- calling mainCtrl controller's doLogin() method that makes http post request on submit button click -->
 
-	<form ng-submit="mainCtrl.doLogin()">
+<!-- calling logincontrol controller's doLogin() method that makes http post request on submit button click -->
+
+	<form ng-submit="logincontrol.doLogin()">
 		
 		<label>UserName</label>
-		<input class="form-control" type="text" name="name" placeholder="Enter UserName" ng-model="mainCtrl.loginData.username">
+		<input class="form-control" type="text" name="name" placeholder="Enter your UserName" ng-model="logincontrol.loginData.username">
 		<br>
 
 		<label>Password</label>
-		<input class="form-control" type="text" name="password" placeholder="Enter Password" ng-model="mainCtrl.loginData.password">
+		<input class="form-control" type="text" name="password" placeholder="Enter your Password" ng-model="logincontrol.loginData.password">
 		<br>
 
 		<button class="btn btn-primary" type="submit">Login</button>
@@ -21,20 +22,24 @@
 
 <br>
 
+
 <!-- Progress indicator for Registration -->
-<div class="jumbotron text-center" ng-show="mainCtrl.loading">
+<div class="jumbotron text-center" ng-show="logincontrol.loading" >
 	<span class="glyphicon glyphicon-repeat spinner" ></span>
 	<p>Logging In...</p>
 </div>
 
 <!-- For displaying alerts regarding successfull user registration -->
 
-<div class="row show-hide message" ng-show="mainCtrl.successMsg">
-	<div class="alert alert-success">{{mainCtrl.successMsg}}</div>
+<div class="row show-hide message" ng-show="logincontrol.successMsg" >
+	<div class="alert alert-success">{{logincontrol.successMsg}}</div>
 </div>
+
 
 <!-- For displaying alerts regarding erraneous user registration -->
 
-<div class="row show-hide message" ng-show="mainCtrl.errormsg">
-	<div class="alert alert-danger">{{mainCtrl.errormsg}}</div>
+<div class="row show-hide message" ng-show="logincontrol.errormsg" >
+	<div class="alert alert-danger">{{logincontrol.errormsg}}</div>
 </div>
+
+

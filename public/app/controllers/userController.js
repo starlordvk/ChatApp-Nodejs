@@ -5,13 +5,13 @@ userController.controller("regControl",function($http,$location,$timeout){
 	var app=this;
 	app.errormsg=false;
 	app.successMsg=false;
-	app.loading=true;
+	app.loading=false;
 	 this.regUser=function(regData){
 		
 		//making an HTTP request to the backend
 		$http.post('/api/users',this.regData).then(function(data){
 
-
+			app.loading=true;
 			//if user creation is successfull and json data received has success=trues
 			if(data.data.success)
 			{

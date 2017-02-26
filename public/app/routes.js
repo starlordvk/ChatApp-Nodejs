@@ -23,7 +23,9 @@ $routeProvider
 
 
 	.when("/login",{
-		templateUrl:"app/views/pages/users/login.html"
+		templateUrl:"app/views/pages/users/login.html",
+		controller:"mainCtrl",
+		controllerAs:"logincontrol"
 	})
 
 

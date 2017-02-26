@@ -26,11 +26,14 @@ router.post("/users",function(req,res){
 //User login
 router.post("/authenticate",function(req,res){
 
-
+console.log(req.body);
 
 	User.findOne({username:req.body.username}).select("email username password").exec(function(err,user){
 
-		if(err) throw err;
+		if(err) {
+			console.log(err);
+			res.json({ success: false, message: err });
+		}
 
 		if(!user)
 			{
@@ -52,7 +55,7 @@ router.post("/authenticate",function(req,res){
 					else{
 							res.json({success:true,message:"User authenticated"});
 						}
-			
+			 	
 				}
 				else
 				{
