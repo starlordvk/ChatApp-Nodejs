@@ -1,4 +1,4 @@
-var userController=angular.module("userController",[]);
+var userController=angular.module("userController",['userServices']);
 
 userController.controller("regControl",function($http,$location,$timeout){
 
@@ -9,13 +9,14 @@ userController.controller("regControl",function($http,$location,$timeout){
 	 this.regUser=function(regData){
 		
 		//making an HTTP request to the backend
-		$http.post('/api/users',this.regData).then(function(data){
+		User.create(app.regData).then(function(data){
 
 			app.loading=true;
 			//if user creation is successfull and json data received has success=trues
 			if(data.data.success)
 			{
 				//Create success message and redirect to the homepage
+				app.loading=false;
 				app.successMsg=data.data.message;
 				
 
@@ -23,7 +24,7 @@ userController.controller("regControl",function($http,$location,$timeout){
 				$timeout(function()
 					{
 						app.successMsg="Redirecting";
-						app.loading=false;
+						
 						$location.path("/")
 					},2000);
 				
@@ -35,9 +36,9 @@ userController.controller("regControl",function($http,$location,$timeout){
 				app.loading=false;
 			}
 		});
-	}
+	};
 
-	
+
 });
 
 

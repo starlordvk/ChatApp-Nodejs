@@ -1,10 +1,10 @@
 var userServices=angular.module("userServices",[]);
-
-userServices.factory("User",function(){
+console.log("inside user services");
+userServices.factory("User",function($http){
 
 	userfactory={};
-
-	userfactory.create=function(){
+	//User.create(regdata)
+	userfactory.create=function(regData){
 		return $http.post('/api/users',regData);
 	}
 	return userfactory;

@@ -72,5 +72,46 @@ console.log(req.body);
 
 	});
 });
+
+//creating a middleware
+router.use(function(req,res,next){
+
+var token=req.body.token ||req.body.query || req.headers['x-access-token'];
+	
+	if(token)
+
+{
+		// verify token
+	jwt.verify(token,secret, function(err, decoded) 
+	{
+  	
+  		if (err)
+  		{
+  			res.json({success:false,message:"token not verified"});
+
+  		}
+  		else
+  		{
+  			req.decoded=decoded;
+  			next();
+  		}	
+
+	});
+}	
+
+else
+{
+	res.json({success:false,message:"No token found"});
+}
+
+	
+
+});
+
+router.post("/me",function(req,res){
+
+	res.send(req.decoded);
+
+});
 return router;
 }
