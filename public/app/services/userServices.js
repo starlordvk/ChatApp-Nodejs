@@ -1,5 +1,4 @@
-var userServices=angular.module("userServices",[]);
-console.log("inside user services");
+angular.module("userServices",[]);
 userServices.factory("User",function($http){
 
 	userfactory={};
